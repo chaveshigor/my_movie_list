@@ -21,10 +21,18 @@ func HasErrorMessage(t *testing.T, errs []error, expectedError string) {
 	}
 }
 
-func BlankError(t *testing.T, errs []error) {
+func BlankErrors(t *testing.T, errs []error) {
 	t.Helper()
 
 	if len(errs) > 0 {
 		t.Errorf("Expected to receive a blank errors slice. Received: %v", errs)
+	}
+}
+
+func BlankError(t *testing.T, err error) {
+	t.Helper()
+
+	if err != nil {
+		t.Errorf("Expected error to be nil. Received: %v", err)
 	}
 }

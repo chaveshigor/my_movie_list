@@ -16,7 +16,7 @@ func TestPresence(t *testing.T) {
 		rules := validations.Rules{Presence: true}
 		validations.Validate(&errs, "name", name, rules)
 
-		test_helpers.BlankError(t, errs)
+		test_helpers.BlankErrors(t, errs)
 	})
 
 	t.Run("Returns an error when input are not valid", func(t *testing.T) {
@@ -63,7 +63,7 @@ func TestRegex(t *testing.T) {
 		rules := validations.Rules{Regex: emailRegex}
 		validations.Validate(&errs, "email", email, rules)
 
-		test_helpers.BlankError(t, errs)
+		test_helpers.BlankErrors(t, errs)
 	})
 
 	t.Run("Returns an error message when format is invalid", func(t *testing.T) {

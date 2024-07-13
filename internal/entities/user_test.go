@@ -15,7 +15,7 @@ func TestNewUser(t *testing.T) {
 
 		_, errs := entities.NewUser(name, email, password)
 
-		test_helpers.BlankError(t, errs)
+		test_helpers.BlankErrors(t, errs)
 	})
 
 	t.Run("Email", func(t *testing.T) {
