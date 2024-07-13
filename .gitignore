@@ -1,1 +1,2 @@
 .env
+infra/database/run_migrations.sh
