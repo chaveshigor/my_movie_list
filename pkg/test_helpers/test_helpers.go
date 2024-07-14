@@ -36,3 +36,19 @@ func BlankError(t *testing.T, err error) {
 		t.Errorf("Expected error to be nil. Received: %v", err)
 	}
 }
+
+func EqualString(t *testing.T, expected, received string) {
+	t.Helper()
+
+	if expected != received {
+		t.Errorf("Error. Expected '%s', Received '%s'", expected, received)
+	}
+}
+
+func DifferentString(t *testing.T, expected, received string) {
+	t.Helper()
+
+	if expected == received {
+		t.Errorf("Error. Expected '%s', to be different to '%s'", expected, received)
+	}
+}
