@@ -3,6 +3,7 @@ package entities
 import (
 	"time"
 
+	"github.com/chaveshigor/my_movie_list/pkg/crypt"
 	"github.com/chaveshigor/my_movie_list/pkg/validations"
 	"github.com/google/uuid"
 )
@@ -29,10 +30,12 @@ func NewUser(name, email, password string) (*User, []error) {
 		return nil, errs
 	}
 
+	hash, _ := crypt.Encrypt(password)
+
 	return &User{
 		Id:       uuid.New().String(),
 		Email:    email,
-		Password: password,
+		Password: hash,
 		Name:     name,
 	}, nil
 }

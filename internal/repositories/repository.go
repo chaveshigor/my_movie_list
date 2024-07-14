@@ -1,7 +1,9 @@
 package repositories
 
-import "database/sql"
+import (
+	"github.com/chaveshigor/my_movie_list/pkg/database"
+)
 
 type Repository struct {
-	Db *sql.DB
+	Database database.Database
 }
