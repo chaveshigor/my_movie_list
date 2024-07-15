@@ -17,7 +17,7 @@ var (
 	port, _  = strconv.Atoi(os.Getenv("DB_PORT"))
 	username = os.Getenv("DB_USERNAME")
 	password = os.Getenv("DB_PASSWORD")
-	database = os.Getenv("DB_NAME")
+	dbName   = os.Getenv("DB_NAME")
 )
 
 type Database struct {
@@ -31,7 +31,7 @@ func NewDatabase() Database {
 func (d *Database) OpenConnection() {
 	connInfo := fmt.Sprintf(
 		`host=%s port=%d user=%s password=%s dbname=%s sslmode=disable`,
-		host, port, username, password, database,
+		host, port, username, password, dbName,
 	)
 
 	db, err := sql.Open("postgres", connInfo)
@@ -44,7 +44,7 @@ func (d *Database) OpenConnection() {
 		panic(err)
 	}
 
-	fmt.Println("Successfully connected to db")
+	fmt.Printf("\nSuccessfully connected to db %s", dbName)
 	d.Connection = db
 }
 
